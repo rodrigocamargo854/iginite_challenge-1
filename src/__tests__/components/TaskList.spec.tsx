@@ -6,14 +6,19 @@ describe('App Page', () => {
   it('should be able to add a task', async () => {
     render(<TaskList />);
 
+    //cria-se a constante de entrada da tarefa
     const taskInput = screen.getByPlaceholderText('Adicionar novo todo');
+    //cria-se a constante para acionar o botao de adicionar a tarefa
     const addTaskButton = screen.getByTestId('add-task-button');
-
+    //recebe um texto como value
     fireEvent.change(taskInput, {
       target: {
         value: 'Desafio ReactJS Ignite'
       }
     });
+    
+    //recebe um evendo de click no checkbox 
+    //para marcar uma task
     fireEvent.click(addTaskButton);
 
     const addedFirstTaskTitle = screen.getByText('Desafio ReactJS Ignite');
